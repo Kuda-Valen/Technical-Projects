@@ -1,0 +1,19 @@
+
+You've been hired as the sole developer for a small bank. They need a command-line banking system to manage customer accounts. Here's what the bank manager handed you on day one:
+
+"We need a system where our tellers can:
+
+- Open a new account for a customer — they choose between a Savings or Checking account and make an opening deposit.
+- Deposit money into an existing account by entering the account number and amount.
+- Withdraw money — but be careful! Savings accounts must always keep at least R50 inside. Checking accounts can go R500 into the negative (overdraft).
+- Check a balance — teller enters an account number, system shows the current balance and account holder name.
+- Print a mini statement — show the last 5 transactions for an account: date, type (deposit/withdrawal), amount, and running balance.
+- Save and load data — if the bank loses power and restarts, no customer data should be lost. Everything must persist in a JSON file.
+
+
+Constraints the manager gave you
+
+- Every account gets a unique account number — you decide the format (e.g. ACC-0001)
+- No negative deposits or zero-amount transactions — the system must reject invalid input with a clear message
+- All amounts are in South African Rand (R)
+- The app runs as a menu-driven CLI loop until the teller types exit
