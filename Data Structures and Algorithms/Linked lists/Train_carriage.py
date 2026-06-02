@@ -23,8 +23,8 @@ class Train:
         new_carriage = Carriage(carriage_name, carriage_passengers)
 
         if not self.head:
-            new_carriage = Carriage(carriage_name, carriage_passengers)
-
+            if not self.head:
+                print("Train has no carriages.")
             self.head = new_carriage
             return
         
@@ -35,11 +35,16 @@ class Train:
 
     def display (self):
         current_carriage = self.head
-        carriage = (current_carriage.carriage_name, current_carriage.carriage_passengers)
         carriages = []
+
         while current_carriage:
-            carriages.append(str(carriage))
-            current_carriage = current_carriage.next
+            carriage = (
+                current_carriage.carriage_name,
+                current_carriage.carriage_passengers
+            )
+        carriages.append(str(carriage))
+        current_carriage = current_carriage.next
+            
         print(f" --> ".join(carriages) +" --> None")
 
 def main_menu():
