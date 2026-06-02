@@ -24,3 +24,71 @@
     Method: cancel_last_purchase() (Undo). 
     This pops the last order off the stack, returns the item to the inventory stock, and logs the cancellation.
 """
+
+Inventory = []
+
+class Product:
+    def __init__(self, product_id, product_name, stock_count, price):
+        self.product_id = product_id
+        self.product_name = product_name
+        self.stock_count = stock_count
+        self.price = price
+
+    def add_product(self):
+        # Adding a new product
+        print("\nAdd New Product to Inventory\n")
+        product_id = input("Enter product ID: ")
+        product_name = input("Enter product name: ")
+        stock_count = int(input("Enter number of product to add: "))
+        price = float(input("Enter product price: R"))
+
+        product = {
+            "product_id" : product_id, 
+            "product_name" : product_name, 
+            "stock_count" : stock_count, 
+            "price" : price
+        }
+        
+        Inventory.append(product)
+
+        print(f"Product has been added successfully: |{Inventory(product)}|")
+
+    def search_product(self): 
+            print("|Add or Remove stock from directory|")
+        
+    def purchase(self):
+        print("Purchasing product..")
+
+    def view_products(self):
+        # Viewing all products
+        print(Inventory)    
+
+
+if __name__ == "__main__":
+    product_class = Product()
+
+    while True:
+        print("\n<-- Undo-Capable Flash-Sale Checkout System -->\n")
+        print("1. Add New Product")
+        print("2. View All products")
+        print("3. Purchase a product")
+        print("10. Exit")
+
+        try:
+            option = int(input("\nChoose an option: "))
+
+            if option == 1:
+                product_class.add_product()
+            
+            elif option == 2:
+                product_class.view_products()
+            
+            elif option == 10:
+                print("Exiting...")
+                break
+
+            else:
+                print("Invalid option, Choose a correct option!!!")
+        
+        except ValueError as e:
+            print(f"Invalid Input, Error: {e}")
