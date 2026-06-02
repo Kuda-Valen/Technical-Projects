@@ -5,8 +5,14 @@ class User:
         self.name = name
         self.surname = surname
         self.balance = balance 
-        self.balance = acc_type
+        self.acc_type = acc_type
         self.acc_no = acc_no
 
     def add_user():
+        print("\n<-- Add new user -->\n")
+        name = input("What is user's Name: ")
+        surname = input("What is user's Surname: ")
+        acc_type = input("User's account preference (A. Savings or B.Checking): ").lower()
+        balance = 0
+
         
