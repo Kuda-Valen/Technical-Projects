@@ -35,6 +35,11 @@ class Product:
     
     def __str__(self):
         return f"ID: {self.product_id} | Name: {self.product_name} | Stock: {self.stock_count} | Price: R{self.price}"
+class Node: 
+    def __init__(self, data):
+        self. data = data      # this is to store the value
+        self. Next = None
+
 
 class Inventory_Manager:
     def __init__(self):
