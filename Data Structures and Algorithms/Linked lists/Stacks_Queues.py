@@ -25,21 +25,35 @@
     This pops the last order off the stack, returns the item to the inventory stock, and logs the cancellation.
 """
 
+class Node: 
+    def __init__(self, data):
+        self. data = data      # this is to store the value
+        self. Next = None      # this will point to the next node (for now there is nothing to point to)
 
 class Product:
     def __init__(self, product_id, product_name, stock_count, price):
+        self.head = None
         self.product_id = product_id
         self.product_name = product_name
         self.stock_count = stock_count
         self.price = price
     
-    def __str__(self):
-        return f"ID: {self.product_id} | Name: {self.product_name} | Stock: {self.stock_count} | Price: R{self.price}"
-class Node: 
-    def __init__(self, data):
-        self. data = data      # this is to store the value
-        self. Next = None
+    # Method to add a new node at the end
+    def append(self, data):
+        new_node = Node(data)
 
+        # If the list is empty, we make this new head
+        if not self.head:
+            self.head = new_node
+            return
+        
+        # Otherwise travel to the end of the list to the last node
+        current = self.head
+        while current.next:
+            current = current.next
+        # We link the last node to the new node
+        current.next = new_node
+    
 
 class Inventory_Manager:
     def __init__(self):
