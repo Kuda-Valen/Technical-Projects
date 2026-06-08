@@ -53,11 +53,6 @@ class Product:
             current = current.next
         # We link the last node to the new node
         current.next = new_node
-    
-
-class Inventory_Manager:
-    def __init__(self):
-        self.inventory = []
 
     def add_product(self):
         # Adding a new product
@@ -89,9 +84,9 @@ class Inventory_Manager:
                 print(product)   
 
 
-if __name__ == "__main__":
-    inventory_manager = Inventory_Manager()
-
+#if __name__ == "__main__":
+    #product_manager = Product()
+def main_menu():
     while True:
         print("\n<-- Undo-Capable Flash-Sale Checkout System -->\n")
         print("1. Add New Product")
