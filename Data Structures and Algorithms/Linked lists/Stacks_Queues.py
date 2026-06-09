@@ -25,34 +25,17 @@
     This pops the last order off the stack, returns the item to the inventory stock, and logs the cancellation.
 """
 
-class Node: 
-    def __init__(self, data):
-        self. data = data      # this is to store the value
-        self. Next = None      # this will point to the next node (for now there is nothing to point to)
-
-class Product:
+class ProductNode:
     def __init__(self, product_id, product_name, stock_count, price):
-        self.head = None
         self.product_id = product_id
         self.product_name = product_name
         self.stock_count = stock_count
         self.price = price
-    
-    # Method to add a new node at the end
-    def append(self, data):
-        new_node = Node(data)
+        self.next = None
 
-        # If the list is empty, we make this new head
-        if not self.head:
-            self.head = new_node
-            return
-        
-        # Otherwise travel to the end of the list to the last node
-        current = self.head
-        while current.next:
-            current = current.next
-        # We link the last node to the new node
-        current.next = new_node
+class InventoryManager: 
+    def __init__(self):
+        self.head = None      # this will point to the next node (for now there is nothing to point to)
 
     def add_product(self):
         # Adding a new product
@@ -62,31 +45,72 @@ class Product:
         stock_count = int(input("Enter number of product to add: "))
         price = float(input("Enter product price: R"))
 
-        product = Product(product_id, product_name, stock_count, price)
+        new_product = ProductNode(product_id, product_name, stock_count, price)
 
-        self.inventory.append(product)
-
-        print(f"Product has been added successfully: |{product.product_name}|")
-
-    def search_product(self): 
-            print("|Add or Remove stock from directory|")
+        # If list is empty
+        if self.head is None:
+            self.head = new_product
+            return
         
-    def purchase(self):
-        print("Purchasing product..")
+        # Otherwise we traverse
+        current = self.head
+
+        while current.next:
+            current = current.next
+        
+        current.next = new_product
+
+        print(f"Product has been added successfully: |{new_product.product_name}|")
+
+    def search_product(self, product_id): 
+            current = self.head
+
+            while current: 
+                if current.product_id == product_id:
+                    return current
+                
+                current = current.next
+        
+            return None
+        
+    def purchase(self, product_id):
+        
+        product = self.search_product(product_id)
+
+        if product is None:
+            print("Product Not found")
+            return False
+        
+        if product.stock_count <=  0:
+            print("Out of Stock")
+            return False
+        
+        product.stock_count -= 1
+
+        print(f"{product.product_name} has been purchased successfully.")
+
+        return True
 
     def view_products(self):
         # Viewing all products
-        if not self.inventory:
+        if self.head is None:
             print("There are no products")
+            return
         
-        else:
-            for product in self.inventory:
-                print(product)   
+        current = self.head
+
+        while current:
+            print(f"ID : {current.product_id} |")
+            print(f"Name : {current.product_name} |")
+            print(f"Stock : {current.stock_count} |")
+            print(f"Price: R{current.price} |")
+
+            current = current.next   
 
 
-#if __name__ == "__main__":
-    #product_manager = Product()
-def main_menu():
+if __name__ == "__main__":
+    inventory_manager = InventoryManager()
+
     while True:
         print("\n<-- Undo-Capable Flash-Sale Checkout System -->\n")
         print("1. Add New Product")
@@ -112,3 +136,4 @@ def main_menu():
         
         except ValueError as e:
             print(f"Invalid Input, Error: {e}")
+
