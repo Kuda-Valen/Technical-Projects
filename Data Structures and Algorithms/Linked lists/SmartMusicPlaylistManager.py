@@ -15,7 +15,7 @@ class Song(Media):
         self.genre = genre
 
 class Podcast(Media): 
-    def __init__(self, title: str, creator: str, duration: float, genre: str, episode_num: int):
+    def __init__(self, title: str, creator: str, duration: float, episode_num: int):
         super().__init__(title, creator, duration)
         self.episode_num = episode_num
 
@@ -112,8 +112,25 @@ class PlaylistManager:
             
             current = current.next
     
-    def search_media(self, title):
-        print("return matching node")
+    def search_media(self):
+        print("\n Seach Media")
+        if self.head is None:
+            print("There are no songs in the playlist")
+            return
+        
+        target = input("Enter title to Search: ").lower()
+
+        current = self.head
+
+        while current.next:
+            media = current.media_object
+            if target == media.title.lower():
+                if current.media_type == "song":
+                    print(f"Title: {media.title} | Creator: {media.creator} | Duration: {media.duration} | Genre: {media.genre}")
+                elif current.media_type == "podcast":
+                    print(f"Title: {media.title} | Creator: {media.creator} | Duration: {media.duration} | Episode Number: {media.episode_num}")
+            else:
+                current = current.next
     
     def remove_media(self, title):
         print("delete node from linked list")
@@ -143,6 +160,9 @@ if __name__ == "__main__":
             
             elif option == 2:
                 playlist_manager.view_playlist()
+            
+            elif option == 3:
+                playlist_manager.search_media()
 
             elif option == 6:
                 print("\nExiting...")
