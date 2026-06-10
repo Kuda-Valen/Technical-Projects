@@ -57,7 +57,7 @@ class PlaylistManager:
         
                 current = self.head
 
-                while current:
+                while current.next:
                     current = current.next
 
                 current.next = media_object
@@ -84,7 +84,7 @@ class PlaylistManager:
         
                 current = self.head
 
-                while current:
+                while current.next:
                     current = current.next
 
                 current.next = media_object
@@ -153,4 +153,7 @@ if __name__ == "__main__":
         
         except ValueError as e: 
             print("Invalid input. Error: {e}")
-        
+
+"""
+    NEXT IS TO FINISH THE OTHER FUCTIONS IN THE MENU
+"""
