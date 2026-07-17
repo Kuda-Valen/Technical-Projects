@@ -22,7 +22,7 @@ class User():
         return age_in_months
 
 if __name__ == "__main__":
-    user = User()
+    #user = User()
 
     while True:
         print("\n== My First FNB practice Q==\n")
@@ -47,10 +47,10 @@ if __name__ == "__main__":
             print(user.name.upper())
         
         elif option == 3:
-            print(f"Your age in months: {user.calculate_age(user.age)}")
+            print(f"Your age in months: {user.age*12}")
         
         elif option == 4:
-            print(f"Your fav number is: {user.fav_number:.2f}")
+            print(f"Your fav number is: {user.fav_number.round(2)}")
         
         elif option == 5:
             print(f"Name: {user.name} => {user.name.type()}")
