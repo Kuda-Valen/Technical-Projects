@@ -21,6 +21,7 @@ def username_setter(name, surname):
     return username
 
 if __name__ == "__main__":
+    first_name = ""
 
     while True:
         print("\n==== User Info Formatter ====\n")
@@ -37,14 +38,19 @@ if __name__ == "__main__":
                 bio = input("Enter a small Bio paragraph: ").strip()
             
             elif option == 2:
-                print("\n== Formatted User Info ==\n")
-                username = username_setter(first_name, last_name)
-                print(first_name.title(), last_name.title())
-                print(f"Your username: {username}")
-                print(f"Your Bio: \n{bio.strip()}")
-                print(f"Number of characters in your bio: {len(bio)}")
-                print(f"New bio without 'I am': \n{bio.replace("I am", "I'm")}")
-                
+                if first_name == "":
+                    print("\nNo infomation yet..")
+                    print("Choose option 1, to enter user information..")
+                    
+                else:
+                    print("\n== Formatted User Info ==\n")
+                    username = username_setter(first_name, last_name)
+                    print(first_name.title(), last_name.title())
+                    print(f"Your username: {username}")
+                    print(f"Your Bio: \n{bio.strip()}")
+                    print(f"Number of characters in your bio: {len(bio)}")
+                    print(f"New bio without 'I am': \n{bio.replace("I am", "I'm")}")
+                    
             
             elif option == 3:
                 print("\nExiting...")
