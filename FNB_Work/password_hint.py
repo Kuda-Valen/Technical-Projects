@@ -19,4 +19,4 @@ new_password = password.strip()
 
 print(f"Password: {password}")
 print(f"New Password: {new_password}")
-print(f"Your password hint: Starts with {password_hint(new_password)[0]} and ends with {password_hint(new_password)[1]}")
+print(f"Your password hint: Starts with {password_hint(new_password)[0].upper()} and ends with {password_hint(new_password)[1].upper()}")
