@@ -28,5 +28,15 @@ class Student():
         i=3
         while i < 3:
             subject = input("Enter subject: ")
+            grade = float(input("Enter subject grade: "))
+            subject_grade = {
+                "subject" : subject,
+                "grade" : grade
+            }
+            subjects.append(subject_grade)
             i += 1
+
+    def average_grade(self):
+        
+        
         
