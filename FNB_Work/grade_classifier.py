@@ -15,28 +15,38 @@
     the status, and any intervention flags
 """
 
-class Student():
-    def __init__(self, name, subjects, average_grade, status):
-        self.name = name
-        self.subjects = []
-        self.average_grade = average_grade
-        self.status = status
+def get_student_info():
+    name = input("Enter Name: ").strip()
+    subject1 = input("Enter Subject 1 Name: ").strip()
+    subject1_marks = float(input("Enter Subject 1 Marks: ")).strip()
+    subject2 = input("Enter Subject 2 Name: ").strip()
+    subject2_marks = float(input("Enter Subject 2 Marks: ")).strip()
+    subject3 = input("Enter Subject 3 Name: ").strip()
+    subject3_marks = float(input("enter Subject 3 Marks: ")).strip()
+    subjects = [subject1, subject2, subject3]
+    subject_marks = [subject1_marks, subject2_marks, subject3_marks]
 
-        name = input("Enter your name: ")
-        print("Enter your subjects:..")
+    average_mark = (subject1_marks+subject2_marks+subject3_marks)/3
+    grade_letter = get_grade_letter(average_mark)
+    pass_status = get_pass_status(average_mark)
 
-        i=3
-        while i < 3:
-            subject = input("Enter subject: ")
-            grade = float(input("Enter subject grade: "))
-            subject_grade = {
-                "subject" : subject,
-                "grade" : grade
-            }
-            subjects.append(subject_grade)
-            i += 1
+    def get_grade_letter(average_mark):
+        if average_mark >= 80:
+            grade_letter = 'A'
+        elif average_mark >= 70 and average_mark < 80:
+            grade_letter = 'B'
+        elif average_mark >= 60 and average_mark < 70:
+            grade_letter = 'C'
+        elif average_mark >= 50 and average_mark < 60:
+            grade_letter = 'D'
+        else:
+            grade_letter = 'F'
+        return grade_letter
 
-    def average_grade(self):
-        
-        
-        
+    def get_pass_status(average_mark):
+        if average_mark >= 50:
+            pass_status = "Pass"
+
+        else:
+            pass_status = "Fail"
+        return pass_status
